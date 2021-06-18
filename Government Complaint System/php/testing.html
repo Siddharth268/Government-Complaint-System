@@ -1,0 +1,41 @@
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="../css/submitAckw.css" />
+		
+		<script type="text/javascript">
+			
+			function validateForm(){
+				var email = document.forms['signinForm']['email'].value;
+				var reg = /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/;
+							
+				if(reg.test(email) == false){
+					document.getElementById("email").classList.add('invalid');
+					document.getElementById("email").focus();
+					showSnackbar("Invalid Email.");
+					return false;
+				}else{
+					document.getElementById("email").classList.remove('invalid');
+				}
+				return true;
+			}
+			
+			function showSnackbar(msg) {
+				var x = document.getElementById("snackbar");
+				x.innerHTML = msg;
+				x.className = "show";
+				setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
+			}
+		</script>
+    </head>
+    <body>
+        <center>
+            <div class="divParent">
+				<img src="../tick.png" width="100px" height="100px">
+                <h2>Successful</h2>
+				<p>Your idea is successfully submited and it will be definetly cosidered in one or the other way.</p>
+				<a href="home.php" class="goback">Go Back</a>
+			</div>
+        </center>
+    </body>
+</html>
